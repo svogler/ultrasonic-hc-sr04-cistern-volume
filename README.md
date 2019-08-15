@@ -1,9 +1,7 @@
 # Measure fill-level of oil tank / water-cistern with Raspberry Pi and Ultrasonic Sensor HC-SR04
 
-Python program to measure fill-level with Raspberry Pi and Ultrasonic Sensor HC-SR04, log data into InfluxDB and generate a nice looking Dashboard in Grafana for visualization.
-
-## Grafana Dashboard
-Fill-level are displayed via a Grafana Dashboard, Grafana is pulling the information from Influx-DB.
+Python program to measure fill-level with Raspberry Pi and Ultrasonic Sensor HC-SR04, log data into InfluxDB.
+Fill-level and historic trend data are displayed via a Grafana Dashboard, Grafana pulling the information from Influx-DB.
 
 ![Grafana Dashboard](docs/grafana-dashboard.jpg)
 
