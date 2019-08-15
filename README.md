@@ -10,6 +10,9 @@ Python program to measure fill-level with Raspberry Pi and Ultrasonic Sensor HC-
 * HC-SR-04
 
 ## Wiring
-(docs/wiring.img)
+Following picture shows the circuit how to connect Pi with HC-SR04 ultrasonic sensor. 
+
+You need the resistors (voltage divider) in order to drop the voltage going to the GPIO pins down to 3.3v from 5v. 
+![Circuit Raspberry Pi and HC-SR04](docs/circuit-pi-hcsr04.jpg)
 
 
