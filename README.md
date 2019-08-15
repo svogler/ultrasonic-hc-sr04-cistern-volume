@@ -6,7 +6,7 @@ Fill-level and historic trend data are displayed via a Grafana Dashboard, Grafan
 ![Grafana Dashboard](docs/grafana-dashboard.jpg)
 
 ## Hardware required
-* Raspberry Pi (Zero works as well)
+* Raspberry Pi (Pi Zero works as well)
 * HC-SR-04
 
 ## Wiring
@@ -15,5 +15,14 @@ Following picture shows the circuit how to connect Pi with HC-SR04 ultrasonic se
 You need the resistors (voltage divider) in order to drop the voltage going to the GPIO pins down to 3.3v from 5v. 
 
 ![Circuit Raspberry Pi and HC-SR04](docs/circuit-pi-hcsr04.jpg)
+
+
+## Software components needed
+* Python
+* InfluxDB
+* Grafana
+
+
+# Configuration
 
 
