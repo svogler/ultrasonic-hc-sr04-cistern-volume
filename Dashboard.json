@@ -294,19 +294,13 @@
             [
               {
                 "params": [
-                  "volumen"
+                  "percent"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
                 "type": "last"
-              },
-              {
-                "params": [
-                  " / 50"
-                ],
-                "type": "math"
               }
             ]
           ],
@@ -634,5 +628,5 @@
   "timezone": "browser",
   "title": "Zisterne",
   "uid": "dCdka0zgz",
-  "version": 35
+  "version": 36
 }
