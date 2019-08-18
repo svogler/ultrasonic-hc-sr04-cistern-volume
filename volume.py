@@ -23,10 +23,10 @@ SPEED_2 = 17015
 # Sleeptime after Sensorrun (in sec)
 SLEEP_TIME = 15
 
-# Schallgeschwindigkeit/2
-ZISTERNE_HIGH = 20   # Sensorabstand wenn voll
-ZISTERNE_LOW = 200   # Sensorabstand wenn voll
-ZISTERNE_VOLUME=4500 # Volumen Gesamt
+# Tank Specs
+ZISTERNE_HIGH = 20   # Distance from Sensor when full 
+ZISTERNE_LOW = 190   # Distance from Sensor when empty 
+ZISTERNE_VOLUME=5000 # Volume (full)
 
 #INFLUXDB Parameters
 INFLUX_DB_HOST='localhost'
@@ -87,7 +87,7 @@ def measure_range():            # Measures and returns Median
     time.sleep(0.05)
   return statistics.median(values);             # Return Median
 
-def write_to_db(dist, volume):
+def write_to_db(dist, volume, percent):
     client = InfluxDBClient(INFLUX_DB_HOST, INFLUX_DB_PORT, INFLUX_DB_USER, INFLUX_DB_PASSWORD, INFLUX_DB_NAME)
     now = datetime.datetime.now()
     json_body = [
@@ -99,19 +99,22 @@ def write_to_db(dist, volume):
             },
             "time": now.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
             "fields": { "fuellstand" : dist,
-                        "volumen" : volume}
+                        "volumen" : volume,
+                        "percent" : percent}
         }
     ]
-    print("Write Points to Influx dist = %1.1f, volume = %1.1f" % (dist, volume))
+    print("Write Points to Influx dist = %1.1f, volume = %1.1f, percent = %1.1f" % (dist, volume, percent))
     client.write_points(json_body)
 
-# do it
+# main loop
 try:
   GPIO.add_event_detect(ECHO, GPIO.BOTH, callback=measure)
   while True:
     dist = round(measure_range(), 1)
+    volume = calc_volume(dist)
+    percent = int(volume / ZISTERNE_VOLUME * 100)
     print("Range = %1.1f cm" % dist)
-    write_to_db(dist, calc_volume(dist))
+    write_to_db(ZISTERNE_LOW - dist, volume, percent)
     time.sleep(SLEEP_TIME)
 
 # reset GPIO settings if user pressed Ctrl+C
