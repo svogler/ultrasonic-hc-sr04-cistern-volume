@@ -38,7 +38,6 @@ You need the resistors (voltage divider) in order to drop the voltage going to t
 
 (6) Autostart of the program
 
-Add to /etc/rc.local following line to autostart the python program (run as pi, change path according to local environment)
-
-(sleep 60; sudo -H -u pi /usr/bin/python3 /home/pi/<path>/volume.py >> /home/pi/<path>/output.log) &
+- Add to /etc/rc.local following line to autostart the python program (run as pi, change path according to local environment)
+- `(sleep 60; sudo -H -u pi /usr/bin/python3 /home/pi/<path>/volume.py >> /home/pi/<path>/output.log) &`
 
