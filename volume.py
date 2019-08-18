@@ -89,7 +89,7 @@ def measure_range():            # Measures and returns Median
 
 def write_to_db(dist, volume, percent):
     client = InfluxDBClient(INFLUX_DB_HOST, INFLUX_DB_PORT, INFLUX_DB_USER, INFLUX_DB_PASSWORD, INFLUX_DB_NAME)
-    now = datetime.datetime.now()
+    now = datetime.datetime.utcnow()  # influx stores all data in UTC
     json_body = [
         {
             "measurement": "zisterne_fuellstand",
