@@ -26,7 +26,9 @@ You need the resistors (voltage divider) in order to drop the voltage going to t
 
 
 ## Configuration
-(1) Setup Influx by running the DB Setup scripts
+(1) Create Influx DB
+- `influx -precision rfc3339`
+- `CREATE DATABASE Zisterne`
 
 (2) Adjust Parameters in the phyton code to your local config (InfluxDB) and tank (volume, height)
 
