@@ -13,6 +13,7 @@ Fill-level and historic trend data are displayed via a Grafana Dashboard, Grafan
 
 ## Wiring
 Following picture shows the circuit how to connect Pi with HC-SR04 ultrasonic sensor. 
+In my environment the distance between Pi and HC-SR-04 is 6m, works without any problem.
 
 You need the resistors (voltage divider) in order to drop the voltage going to the GPIO pins down to 3.3v from 5v. 
 
@@ -32,11 +33,14 @@ You need the resistors (voltage divider) in order to drop the voltage going to t
 
 (2) Adjust Parameters in the phyton code to your local config (InfluxDB) and tank (volume, height)
 
-(3) Run the Phyton script and check the output
+(3) Do a test-run the Phyton script 
+- run ![volume.py](volume.py) in a terminal to test, check the output.
+- You should see log output of the distance measured
 
 (4) Setup Grafana - InfluxDB Connection
 
 (5) Setup Grafana Dashboard
+- Use ![Dashboard.json](Dashboard.json) as example, you can modify based on your own needs
 
 (6) Autostart of the program
 
